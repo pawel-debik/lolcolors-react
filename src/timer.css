@@ -1,0 +1,20 @@
+/* Vars */
+:root {
+	--primary-color: #f5eadd;
+	--action-color: #00A3FF;
+	--confirmation-color: #1abc00;
+	--bg-color: #f3f3f3;
+}
+
+/* Timer */ 
+.circle-wrap { margin: 50px auto; width: 150px; height: 150px; background: var(--primary-color); border-radius: 50%; }
+#progress {
+	transition: stroke-dashoffset 5000ms linear;
+	fill: none;
+	stroke: #00b3f0;
+	stroke-width: 5.5;
+	stroke-linecap: round;
+	stroke-dasharray: 250.1;
+}
+#progress.reset { stroke-dashoffset: 250.1; transition: stroke-dashoffset 1ms linear; }
+#progress.start { stroke-dashoffset: 0; } 
