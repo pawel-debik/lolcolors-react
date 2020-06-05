@@ -6,33 +6,42 @@ import './App.css';
 
 function App() {
 
-	const [progress, setProgress] = useState('5');
+	const [gameProgress, setgameProgress] = useState('5');
 	const [gameStatus, setGameStatus] = useState('Start');
+	const [timerStatus, setTimerStatus] = useState('reset');
+	const [gameDescription, setgameDescription] = useState('Press start and name the colors:');
 
 	function doStuff(props){
 		setGameStatus('Game running');
+		setgameDescription('Name the colors: ');
+		setTimerStatus('start');
 
 		let gameTime = 5;
 
-		let timeInterval = setInterval(function() {
-			if (gameTime < 1) {
+		var er = function() {
+			if (gameTime <= 0) {
 				clearInterval(timeInterval);
-				setGameStatus('game over');
+				setGameStatus('Game over. Try again.');
+				setgameProgress(0);
+				setTimerStatus('reset');
 			} else {
-				setGameStatus('game running');
-				setProgress(gameTime);
+				setgameProgress(gameTime);
 			}
 
 			gameTime--;
-		}, 1000);
+		}
+
+		er();
+
+		let timeInterval = setInterval(er, 1000);
 
 		return 'a';
 	}
 
 	return (
 		<div className="App">
-				<Timer progress={progress} counter={progress} />
-				<Statusbar />
+				<Timer progress={timerStatus} counter={gameProgress} />
+				<Statusbar description={gameDescription}/>
 				<Interface status={gameStatus} doSomething={doStuff} />
 		</div>
 	);

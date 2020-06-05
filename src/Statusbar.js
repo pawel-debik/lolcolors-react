@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Statusbar = function(){
+const Statusbar = function(props){
 	return(
 		<div className = "bar">
-			<p id = "instructions" className = "instructions">Press start and name the colors: </p>
+			<p 
+				id = "instructions" 
+				className = "instructions">
+				{props.description}
+			</p>
 			<div className = "words" id="words"></div>
 		</div>
 	);
